@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GenAI Use-Case-Finder | plan a</title>
+    <title>KI-Wissen | plan a</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -27,63 +27,8 @@
             --radius-lg: 14px;
             --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
             --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
             --transition: .2s cubic-bezier(.4,0,.2,1);
-
-            /* Role Colors */
-            --role-allbereich: #8a8a9a;
-            --role-allbereich-bg: #f5f5f7;
-            --role-admin: #CA8A04;
-            --role-admin-bg: #FEFCE8;
-            --role-compliance: #5c1444;
-            --role-compliance-bg: #f3e6ee;
-            --role-finance: #0369A1;
-            --role-finance-bg: #F0F9FF;
-            --role-ecom: #EA580C;
-            --role-ecom-bg: #FFF7ED;
-            --role-lead: #1a7a3e;
-            --role-lead-bg: #e8f7ee;
-            --role-hr: #DB2777;
-            --role-hr-bg: #FDF2F8;
-            --role-it: #7C3AED;
-            --role-it-bg: #F5F3FF;
-            --role-service: #0891B2;
-            --role-service-bg: #ECFEFF;
-            --role-mktg: #DC2626;
-            --role-mktg-bg: #FEF2F2;
-            --role-oe: #059669;
-            --role-oe-bg: #F0FDF4;
-            --role-quality: #92400E;
-            --role-quality-bg: #FFFBEB;
-            --role-sales: #4338CA;
-            --role-sales-bg: #EEF2FF;
-
-            /* Coverage Colors */
-            --cov-green: #C8E6C9;
-            --cov-green-border: #2EAD60;
-            --cov-yellow: #FFF9C4;
-            --cov-yellow-border: #CA8A04;
-            --cov-red: #FFCDD2;
-            --cov-red-border: #E83946;
-
-            /* Ansatz Colors */
-            --ansatz-buy: #2EAD60;
-            --ansatz-buy-bg: #e8f7ee;
-            --ansatz-hybrid: #CA8A04;
-            --ansatz-hybrid-bg: #FEFCE8;
-            --ansatz-build: #E83946;
-            --ansatz-build-bg: #FCE4E6;
-
-            /* Effort Colors */
-            --effort-low: #1a7a3e;
-            --effort-low-bg: #e8f7ee;
-            --effort-medium: #92400E;
-            --effort-medium-bg: #FEFCE8;
-            --effort-high: #991B1B;
-            --effort-high-bg: #FCE4E6;
-
-            /* EU Highlight */
-            --eu-bg: #D6EAF8;
-            --eu-text: #0A4F8C;
         }
 
         * {
@@ -109,9 +54,8 @@
         /* Header */
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 32px;
-            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 16px;
+            padding-bottom: 24px;
         }
 
         .header h1 {
@@ -126,623 +70,147 @@
         }
 
         .header p {
-            font-size: 16px;
+            font-size: 17px;
             color: var(--text-secondary);
             font-weight: 400;
+            max-width: 560px;
+            margin: 0 auto;
         }
 
-        /* Intro Box */
-        .intro-box {
-            background-color: var(--green-light);
-            border: 1px solid var(--green);
-            border-radius: var(--radius-lg);
-            padding: 20px;
+        /* Orientation Question */
+        .orientation {
+            text-align: center;
             margin-bottom: 32px;
-            cursor: pointer;
-            transition: all var(--transition);
         }
 
-        .intro-box:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .intro-toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .orientation h2 {
+            font-size: 20px;
             font-weight: 600;
-            color: var(--green-dark);
-            user-select: none;
-        }
-
-        .intro-toggle::after {
-            content: '▼';
-            display: inline-block;
-            transition: transform var(--transition);
-            transform: rotate(0deg);
-        }
-
-        .intro-box.collapsed .intro-toggle::after {
-            transform: rotate(-90deg);
-        }
-
-        .intro-content {
-            max-height: 500px;
-            overflow: hidden;
-            transition: max-height var(--transition);
-        }
-
-        .intro-box.collapsed .intro-content {
-            max-height: 0;
-        }
-
-        .intro-content {
-            margin-top: 16px;
             color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .orientation p {
             font-size: 14px;
-            line-height: 1.8;
-        }
-
-        .intro-content p {
-            margin-bottom: 12px;
-        }
-
-        .intro-content ul {
-            margin-left: 20px;
-            margin-bottom: 12px;
-        }
-
-        .intro-content li {
-            margin-bottom: 8px;
-        }
-
-        /* Search Box */
-        .search-container {
-            margin-bottom: 28px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 16px;
-            color: var(--text);
-            transition: all var(--transition);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--green);
-            box-shadow: 0 0 0 3px rgba(46, 173, 96, 0.1);
-        }
-
-        .search-input::placeholder {
             color: var(--text-muted);
         }
 
-        /* Filter Sections */
-        .filter-section {
-            margin-bottom: 28px;
+        /* Path Cards Grid */
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        .filter-title {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
+        .path-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px 20px 24px;
+            text-align: center;
+            transition: all var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .path-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--green);
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .path-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--green);
+        }
+
+        .path-card:hover::before {
+            opacity: 1;
+        }
+
+        .path-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
             display: block;
         }
 
-        .filter-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .pill {
-            padding: 8px 14px;
-            border-radius: 20px;
-            border: none;
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all var(--transition);
-            user-select: none;
-            background-color: var(--border-light);
-            color: var(--text-secondary);
-        }
-
-        .pill:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .pill.active {
-            box-shadow: var(--shadow-md);
-            font-weight: 600;
-        }
-
-        /* Role Pills */
-        .pill[data-type="role"] {
-            background-color: var(--border-light);
-            color: var(--text-secondary);
-        }
-
-        .pill[data-role="allbereich"].active {
-            background-color: var(--role-allbereich-bg);
-            color: var(--role-allbereich);
-        }
-
-        .pill[data-role="admin"].active {
-            background-color: var(--role-admin-bg);
-            color: var(--role-admin);
-        }
-
-        .pill[data-role="compliance"].active {
-            background-color: var(--role-compliance-bg);
-            color: var(--role-compliance);
-        }
-
-        .pill[data-role="finance"].active {
-            background-color: var(--role-finance-bg);
-            color: var(--role-finance);
-        }
-
-        .pill[data-role="ecom"].active {
-            background-color: var(--role-ecom-bg);
-            color: var(--role-ecom);
-        }
-
-        .pill[data-role="lead"].active {
-            background-color: var(--role-lead-bg);
-            color: var(--role-lead);
-        }
-
-        .pill[data-role="hr"].active {
-            background-color: var(--role-hr-bg);
-            color: var(--role-hr);
-        }
-
-        .pill[data-role="it"].active {
-            background-color: var(--role-it-bg);
-            color: var(--role-it);
-        }
-
-        .pill[data-role="service"].active {
-            background-color: var(--role-service-bg);
-            color: var(--role-service);
-        }
-
-        .pill[data-role="mktg"].active {
-            background-color: var(--role-mktg-bg);
-            color: var(--role-mktg);
-        }
-
-        .pill[data-role="oe"].active {
-            background-color: var(--role-oe-bg);
-            color: var(--role-oe);
-        }
-
-        .pill[data-role="quality"].active {
-            background-color: var(--role-quality-bg);
-            color: var(--role-quality);
-        }
-
-        .pill[data-role="sales"].active {
-            background-color: var(--role-sales-bg);
-            color: var(--role-sales);
-        }
-
-        /* Ansatz Pills */
-        .pill[data-ansatz="buy"].active {
-            background-color: var(--ansatz-buy-bg);
-            color: var(--ansatz-buy);
-        }
-
-        .pill[data-ansatz="hybrid"].active {
-            background-color: var(--ansatz-hybrid-bg);
-            color: var(--ansatz-hybrid);
-        }
-
-        .pill[data-ansatz="build"].active {
-            background-color: var(--ansatz-build-bg);
-            color: var(--ansatz-build);
-        }
-
-        /* Coverage Pills */
-        .pill[data-coverage="high"].active {
-            background-color: var(--cov-green);
-            color: var(--cov-green-border);
-        }
-
-        .pill[data-coverage="medium"].active {
-            background-color: var(--cov-yellow);
-            color: var(--cov-yellow-border);
-        }
-
-        .pill[data-coverage="low"].active {
-            background-color: var(--cov-red);
-            color: var(--cov-red-border);
-        }
-
-        /* Effort Pills */
-        .pill[data-effort="low"].active {
-            background-color: var(--effort-low-bg);
-            color: var(--effort-low);
-            border: 1.5px solid var(--effort-low);
-        }
-
-        .pill[data-effort="medium"].active {
-            background-color: var(--effort-medium-bg);
-            color: var(--effort-medium);
-            border: 1.5px solid var(--effort-medium);
-        }
-
-        .pill[data-effort="high"].active {
-            background-color: var(--effort-high-bg);
-            color: var(--effort-high);
-            border: 1.5px solid var(--effort-high);
-        }
-
-        .pill[data-effort="all"].active {
-            background-color: var(--border-light);
-            color: var(--text);
-            border: 1.5px solid var(--text-muted);
-        }
-
-        /* Counter */
-        .counter {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            font-weight: 500;
-        }
-
-        /* Use Case Cards */
-        .usecases-container {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .usecase-card {
-            background-color: var(--surface);
-            border-left: 3px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            overflow: hidden;
-            transition: all var(--transition);
-            cursor: pointer;
-        }
-
-        .usecase-card:hover {
-            transform: translateX(4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .usecase-card.high-coverage {
-            border-left-color: var(--cov-green-border);
-            background-color: var(--cov-green);
-        }
-
-        .usecase-card.medium-coverage {
-            border-left-color: var(--cov-yellow-border);
-            background-color: var(--cov-yellow);
-        }
-
-        .usecase-card.low-coverage {
-            border-left-color: var(--cov-red-border);
-            background-color: var(--cov-red);
-        }
-
-        .usecase-header {
-            padding: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .usecase-header-left {
-            flex: 1;
-        }
-
-        .usecase-header-right {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            justify-content: flex-end;
-            align-items: flex-start;
-        }
-
-        .usecase-nr {
-            display: inline-block;
-            background-color: var(--text-secondary);
-            color: white;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 4px 8px;
-            border-radius: var(--radius-sm);
-            margin-right: 8px;
-            margin-bottom: 8px;
-        }
-
-        .usecase-title {
+        .path-title {
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             line-height: 1.3;
         }
 
-        .usecase-meta {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .role-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
+        .path-question {
+            font-size: 14px;
+            color: var(--green-dark);
             font-weight: 500;
+            font-style: italic;
+            margin-bottom: 14px;
+            line-height: 1.5;
         }
 
-        .role-badge.allbereich {
-            background-color: var(--role-allbereich-bg);
-            color: var(--role-allbereich);
-        }
-
-        .role-badge.admin {
-            background-color: var(--role-admin-bg);
-            color: var(--role-admin);
-        }
-
-        .role-badge.compliance {
-            background-color: var(--role-compliance-bg);
-            color: var(--role-compliance);
-        }
-
-        .role-badge.finance {
-            background-color: var(--role-finance-bg);
-            color: var(--role-finance);
-        }
-
-        .role-badge.ecom {
-            background-color: var(--role-ecom-bg);
-            color: var(--role-ecom);
-        }
-
-        .role-badge.lead {
-            background-color: var(--role-lead-bg);
-            color: var(--role-lead);
-        }
-
-        .role-badge.hr {
-            background-color: var(--role-hr-bg);
-            color: var(--role-hr);
-        }
-
-        .role-badge.it {
-            background-color: var(--role-it-bg);
-            color: var(--role-it);
-        }
-
-        .role-badge.service {
-            background-color: var(--role-service-bg);
-            color: var(--role-service);
-        }
-
-        .role-badge.mktg {
-            background-color: var(--role-mktg-bg);
-            color: var(--role-mktg);
-        }
-
-        .role-badge.oe {
-            background-color: var(--role-oe-bg);
-            color: var(--role-oe);
-        }
-
-        .role-badge.quality {
-            background-color: var(--role-quality-bg);
-            color: var(--role-quality);
-        }
-
-        .role-badge.sales {
-            background-color: var(--role-sales-bg);
-            color: var(--role-sales);
-        }
-
-        .coverage-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            background-color: rgba(255,255,255,0.7);
-            color: var(--text);
-        }
-
-        .effort-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            background-color: rgba(255,255,255,0.7);
-            color: var(--text);
-        }
-
-        .effort-badge.low {
-            background-color: var(--effort-low-bg);
-            color: var(--effort-low);
-        }
-
-        .effort-badge.medium {
-            background-color: var(--effort-medium-bg);
-            color: var(--effort-medium);
-        }
-
-        .effort-badge.high {
-            background-color: var(--effort-high-bg);
-            color: var(--effort-high);
-        }
-
-        .quickwin-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            background-color: #FEF3C7;
-            color: #92400E;
-            border: 1px solid #F59E0B;
-        }
-
-        .usecase-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height var(--transition);
-        }
-
-        .usecase-card.expanded .usecase-details {
-            max-height: 1000px;
-        }
-
-        .details-content {
-            padding: 0 16px 16px 16px;
-            border-top: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .detail-row {
-            margin-bottom: 16px;
-        }
-
-        .detail-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .detail-label {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-            display: block;
-        }
-
-        .detail-value {
-            font-size: 14px;
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        .outcome-text {
-            color: var(--green);
-            font-weight: 600;
-        }
-
-        .coverage-bar-container {
-            background-color: rgba(255,255,255,0.6);
-            border-radius: var(--radius-sm);
-            height: 6px;
-            overflow: hidden;
-            margin-top: 6px;
-        }
-
-        .coverage-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--green) 0%, var(--green-dark) 100%);
-            width: 0%;
-            transition: width var(--transition);
-        }
-
-        .usecase-card.medium-coverage .coverage-bar {
-            background: linear-gradient(90deg, var(--cov-yellow-border) 0%, var(--ansatz-hybrid) 100%);
-        }
-
-        .usecase-card.low-coverage .coverage-bar {
-            background: linear-gradient(90deg, var(--red) 0%, var(--red) 100%);
-        }
-
-        .buy-options {
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        .eu-highlight {
-            background-color: var(--eu-bg);
-            color: var(--eu-text);
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-weight: 500;
-        }
-
-        .cost-display {
-            display: inline-flex;
-            gap: 2px;
-            align-items: center;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .cost-symbol {
-            color: #D1D5DB;
-        }
-
-        .cost-symbol.active {
-            color: var(--green);
-        }
-
-        .timeline-info {
+        .path-description {
             font-size: 13px;
             color: var(--text-secondary);
-            margin-top: 8px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
         }
 
-        .timeline-link {
-            display: inline-block;
-            color: var(--green);
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 8px;
-            transition: all var(--transition);
-        }
-
-        .timeline-link:hover {
-            color: var(--green-dark);
-            text-decoration: underline;
-        }
-
-        .cta-button {
+        .path-cta {
             display: inline-block;
             background-color: var(--green);
             color: white;
-            padding: 12px 24px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
             transition: all var(--transition);
-            border: none;
-            cursor: pointer;
-            margin-top: 12px;
+            margin-top: auto;
         }
 
-        .cta-button:hover {
+        .path-cta:hover {
             background-color: var(--green-dark);
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: var(--green-light);
+            border: 1px solid var(--green);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            margin-bottom: 40px;
+        }
+
+        .info-box h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--green-dark);
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.7;
         }
 
         /* Footer */
@@ -779,54 +247,13 @@
             flex-wrap: wrap;
         }
 
-        /* Usecases Container */
-        .usecases-container {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        /* Active role pill colors */
-        .pill[data-role="admin"].active { background-color: var(--role-admin-bg); color: var(--role-admin); border: 1.5px solid var(--role-admin); }
-        .pill[data-role="compliance"].active { background-color: var(--role-compliance-bg); color: var(--role-compliance); border: 1.5px solid var(--role-compliance); }
-        .pill[data-role="finance"].active { background-color: var(--role-finance-bg); color: var(--role-finance); border: 1.5px solid var(--role-finance); }
-        .pill[data-role="ecom"].active { background-color: var(--role-ecom-bg); color: var(--role-ecom); border: 1.5px solid var(--role-ecom); }
-        .pill[data-role="lead"].active { background-color: var(--role-lead-bg); color: var(--role-lead); border: 1.5px solid var(--role-lead); }
-        .pill[data-role="hr"].active { background-color: var(--role-hr-bg); color: var(--role-hr); border: 1.5px solid var(--role-hr); }
-        .pill[data-role="it"].active { background-color: var(--role-it-bg); color: var(--role-it); border: 1.5px solid var(--role-it); }
-        .pill[data-role="service"].active { background-color: var(--role-service-bg); color: var(--role-service); border: 1.5px solid var(--role-service); }
-        .pill[data-role="mktg"].active { background-color: var(--role-mktg-bg); color: var(--role-mktg); border: 1.5px solid var(--role-mktg); }
-        .pill[data-role="oe"].active { background-color: var(--role-oe-bg); color: var(--role-oe); border: 1.5px solid var(--role-oe); }
-        .pill[data-role="quality"].active { background-color: var(--role-quality-bg); color: var(--role-quality); border: 1.5px solid var(--role-quality); }
-        .pill[data-role="sales"].active { background-color: var(--role-sales-bg); color: var(--role-sales); border: 1.5px solid var(--role-sales); }
-        .pill[data-role="allbereich"].active { background-color: var(--border-light); color: var(--text); border: 1.5px solid var(--text-muted); }
-
-        /* Ansatz pill colors */
-        .pill[data-ansatz="buy"].active { background-color: var(--ansatz-buy-bg); color: var(--ansatz-buy); border: 1.5px solid var(--ansatz-buy); }
-        .pill[data-ansatz="hybrid"].active { background-color: var(--ansatz-hybrid-bg); color: var(--ansatz-hybrid); border: 1.5px solid var(--ansatz-hybrid); }
-        .pill[data-ansatz="build"].active { background-color: var(--ansatz-build-bg); color: var(--ansatz-build); border: 1.5px solid var(--ansatz-build); }
-
-        /* Coverage pill colors */
-        .pill[data-coverage="high"].active { background-color: var(--cov-green); color: var(--green-dark); border: 1.5px solid var(--green); }
-        .pill[data-coverage="medium"].active { background-color: var(--cov-yellow); color: #92400E; border: 1.5px solid var(--ansatz-hybrid); }
-        .pill[data-coverage="low"].active { background-color: var(--cov-red); color: #991B1B; border: 1.5px solid var(--red); }
-
-        /* No Results */
-        .no-results {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-secondary);
-        }
-
-        .no-results h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text);
-        }
-
         /* Responsive */
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
+            .paths-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
             .container {
                 padding: 16px;
             }
@@ -836,36 +263,19 @@
             }
 
             .header p {
-                font-size: 14px;
+                font-size: 15px;
             }
 
-            .usecase-header {
-                flex-direction: column;
+            .path-card {
+                padding: 24px 20px 20px;
             }
 
-            .usecase-header-right {
-                justify-content: flex-start;
-            }
-
-            .usecase-meta {
-                gap: 6px;
+            .path-icon {
+                font-size: 32px;
             }
 
             .footer-links {
                 gap: 16px;
-            }
-
-            .filter-pills {
-                gap: 6px;
-            }
-
-            .pill {
-                padding: 6px 12px;
-                font-size: 13px;
-            }
-
-            .usecase-title {
-                font-size: 16px;
             }
         }
     </style>
@@ -874,434 +284,62 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>GenAI <span>Use-Case</span>-Finder</h1>
-            <p>Finden Sie die passende KI-Lösung für Ihre Rolle und Ihren Use Case</p>
+            <h1><span>KI</span>-Wissen</h1>
+            <p>Finden Sie den richtigen Einstieg in Generative AI für Ihr Unternehmen</p>
         </div>
 
-        <!-- Intro Box -->
-        <div class="intro-box" id="introBox">
-            <div class="intro-toggle">
-                <span>So funktioniert dieser Finder</span>
-            </div>
-            <div class="intro-content">
-                <p>Dieser Finder hilft Ihnen, GenAI-Use-Cases zu entdecken, die für Ihre Rolle und Ihren Arbeitsbereich relevant sind.</p>
-                <p><strong>Wie nutzen Sie den Finder?</strong></p>
-                <ul>
-                    <li><strong>Filtere nach Rolle/Bereich:</strong> Wählen Sie Ihre Funktion oder mehrere Rollen aus, um relevante Use Cases zu sehen</li>
-                    <li><strong>Filtere nach Ansatz:</strong> Buy (vorgefertigte Lösungen), Hybrid (Kombination), oder Build (maßgeschneiderte Entwicklung)</li>
-                    <li><strong>Filtere nach Buy-Abdeckung:</strong> Wie gut können vorgefertigte Tools den Use Case unterstützen?</li>
-                    <li><strong>Filtere nach Aufwand:</strong> Einfach, Moderat oder Komplex - basierend auf Implementierungsaufwand</li>
-                    <li><strong>Suchfeld:</strong> Suchen Sie nach spezifischen Use Cases, Outcomes oder Rollen</li>
-                </ul>
-                <p>Klicken Sie auf einen Use-Case, um weitere Details wie Outcomes, Lösungsansätze, Kostenrahmen und verfügbare Plattformen zu sehen.</p>
-                <p style="margin-top: 16px; font-size: 12px; color: var(--text-muted); font-style: italic;">Weitere Informationen zur Nutzung von GenAI finden Sie in unserer <a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" target="_blank" style="color: var(--green); text-decoration: none;">KI-Nutzen-Timeline</a>.</p>
-            </div>
+        <!-- Orientation Question -->
+        <div class="orientation">
+            <h2>Was suchen Sie?</h2>
+            <p>Wählen Sie Ihren Einstiegspfad</p>
         </div>
 
-        <!-- Search Box -->
-        <div class="search-container">
-            <input
-                type="text"
-                class="search-input"
-                id="searchInput"
-                placeholder="Use Case, Rolle oder Outcome durchsuchen..."
-            >
+        <!-- 3 Path Cards -->
+        <div class="paths-grid">
+            <!-- Path 1: Use-Case-Finder -->
+            <a href="https://alexandersisi.github.io/genai-usecase-finder/" class="path-card">
+                <span class="path-icon">🎯</span>
+                <div class="path-title">Konkreter Use Case</div>
+                <div class="path-question">„Welches KI-Tool löst mein Problem?"</div>
+                <div class="path-description">26 Use Cases, filterbar nach Rolle, Aufwand und Implementierungsansatz. Mit Kostenrahmen, Quick-Win-Markierung und Tool-Empfehlungen.</div>
+                <span class="path-cta">Zum Use-Case-Finder →</span>
+            </a>
+
+            <!-- Path 2: Nutzen-Timeline -->
+            <a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" class="path-card">
+                <span class="path-icon">💡</span>
+                <div class="path-title">KI-Nutzen für meine Rolle</div>
+                <div class="path-question">„Was bringt KI für meinen Bereich?"</div>
+                <div class="path-description">56 Nutzen-Szenarien nach Funktion und Unternehmensbereich. Verstehen Sie, welchen konkreten Mehrwert KI für Ihre Abteilung schaffen kann.</div>
+                <span class="path-cta">Zur Nutzen-Timeline →</span>
+            </a>
+
+            <!-- Path 3: Tools-Timeline -->
+            <a href="https://www.plan-a-consulting.ai/ki-timeline" class="path-card">
+                <span class="path-icon">🔧</span>
+                <div class="path-title">Technologie-Überblick</div>
+                <div class="path-question">„Welche KI-Tools gibt es?"</div>
+                <div class="path-description">Chronologische Tool-Releases und Meilensteine der KI-Entwicklung. Der Überblick für alle, die den Markt verstehen wollen.</div>
+                <span class="path-cta">Zur Tools-Timeline →</span>
+            </a>
         </div>
 
-        <!-- Filters -->
-        <div class="filter-section">
-            <span class="filter-title">Rolle / Bereich</span>
-            <div class="filter-pills" id="roleFilters">
-                <button class="pill active" data-type="role" data-role="allbereich">Alle Rollen</button>
-                <button class="pill" data-type="role" data-role="admin">Assistenz / Admin</button>
-                <button class="pill" data-type="role" data-role="compliance">Compliance / Recht</button>
-                <button class="pill" data-type="role" data-role="finance">Controlling / Finance</button>
-                <button class="pill" data-type="role" data-role="ecom">E-Commerce / PM</button>
-                <button class="pill" data-type="role" data-role="lead">Führungskraft</button>
-                <button class="pill" data-type="role" data-role="hr">HR / Recruiting</button>
-                <button class="pill" data-type="role" data-role="it">IT / Entwicklung</button>
-                <button class="pill" data-type="role" data-role="service">Kundenservice</button>
-                <button class="pill" data-type="role" data-role="mktg">Marketing / Kommunikation</button>
-                <button class="pill" data-type="role" data-role="oe">OE / PE</button>
-                <button class="pill" data-type="role" data-role="quality">Qualität / Operations</button>
-                <button class="pill" data-type="role" data-role="sales">Vertrieb / Sales</button>
-            </div>
-        </div>
-
-        <div class="filter-section">
-            <span class="filter-title">KI-Ansatz</span>
-            <div class="filter-pills" id="ansatzFilters">
-                <button class="pill active" data-type="ansatz" data-ansatz="all">Alle Ansätze</button>
-                <button class="pill" data-type="ansatz" data-ansatz="buy">Buy</button>
-                <button class="pill" data-type="ansatz" data-ansatz="hybrid">Hybrid</button>
-                <button class="pill" data-type="ansatz" data-ansatz="build">Build</button>
-            </div>
-        </div>
-
-        <div class="filter-section">
-            <span class="filter-title">Buy-Abdeckung</span>
-            <div class="filter-pills" id="coverageFilters">
-                <button class="pill active" data-type="coverage" data-coverage="all">Alle</button>
-                <button class="pill" data-type="coverage" data-coverage="high">≥75%</button>
-                <button class="pill" data-type="coverage" data-coverage="medium">50-74%</button>
-                <button class="pill" data-type="coverage" data-coverage="low">&lt;50%</button>
-            </div>
-        </div>
-
-        <div class="filter-section">
-            <span class="filter-title">Aufwand</span>
-            <div class="filter-pills" id="effortFilters">
-                <button class="pill active" data-type="effort" data-effort="all">Alle</button>
-                <button class="pill" data-type="effort" data-effort="low">Einfach</button>
-                <button class="pill" data-type="effort" data-effort="medium">Moderat</button>
-                <button class="pill" data-type="effort" data-effort="high">Komplex</button>
-            </div>
-        </div>
-
-        <!-- Counter -->
-        <div class="counter">
-            <span id="counter">26 von 26 Use Cases sichtbar</span>
-        </div>
-
-        <!-- Use Cases Container -->
-        <div class="usecases-container" id="usecasesContainer">
-        </div>
-
-        <!-- No Results -->
-        <div class="no-results" id="noResults" style="display: none;">
-            <h3>Keine Use Cases gefunden</h3>
-            <p>Versuchen Sie, die Filter anzupassen oder Ihre Suche zu verfeinern.</p>
+        <!-- Info Box -->
+        <div class="info-box">
+            <h3>Ihr Einstieg in die KI-Adoption</h3>
+            <p>Diese drei Perspektiven ergänzen sich: Der <strong>Use-Case-Finder</strong> hilft bei der konkreten Auswahl, die <strong>Nutzen-Timeline</strong> zeigt den strategischen Mehrwert nach Rollen, und der <strong>Technologie-Überblick</strong> ordnet die verfügbaren Tools ein. Starten Sie dort, wo Ihre Frage am dringendsten ist – und entdecken Sie die anderen Perspektiven, wenn Sie tiefer einsteigen möchten.</p>
         </div>
 
         <!-- Footer -->
         <div class="footer">
             <p>Eine Perspektive von <a href="https://www.plan-a-consulting.ai" target="_blank" class="footer-link">plan a · AI Solutions</a></p>
             <div class="footer-links">
-                <a href="https://alexandersisi.github.io/ki-wissen-hub/" target="_blank" class="footer-link">KI-Wissen Hub</a>
-                <a href="https://alexandersisi.github.io/genai-usecase-finder/" target="_blank" class="footer-link">Use-Case-Finder</a>
-                <a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" target="_blank" class="footer-link">Nutzen-Timeline</a>
-                <a href="https://www.plan-a-consulting.ai/ki-timeline" target="_blank" class="footer-link">Technologie-Timeline</a>
+                <a href="https://alexandersisi.github.io/ki-wissen-hub/" class="footer-link">KI-Wissen Hub</a>
+                <a href="https://alexandersisi.github.io/genai-usecase-finder/" class="footer-link">Use-Case-Finder</a>
+                <a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" class="footer-link">Nutzen-Timeline</a>
+                <a href="https://www.plan-a-consulting.ai/ki-timeline" class="footer-link">Technologie-Timeline</a>
             </div>
         </div>
     </div>
-
-    <script>
-        // Data with extended fields
-        const DATA = [
-            {nr:1, rolle:"Alle Bereiche", roleKey:"allbereich", usecase:"Meeting-Protokolle", outcome:"75 % Zeitersparnis bei Protokollen", ansatz:"Buy", coverage:85, coverageLabel:"85 %", buyShort:"Otter.ai, Fireflies, MS Copilot, Amberscript (EU)", eu:true, effort:"low", quickWin:true, costRange:"€", timelineWeeks:1},
-            {nr:2, rolle:"Alle Bereiche", roleKey:"allbereich", usecase:"Internes Wissensmanagement", outcome:"70 % schnellere Informationssuche", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", buyShort:"Glean, Guru, MS Copilot, LangDock (EU)", eu:true, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:6},
-            {nr:3, rolle:"Assistenz / Admin", roleKey:"admin", usecase:"E-Mail-Entwürfe und Korrespondenz", outcome:"60 % schnellere Antwortzeit", ansatz:"Buy", coverage:80, coverageLabel:"80 %", buyShort:"MS Copilot (Outlook), Lavender, Superhuman AI", eu:false, effort:"low", quickWin:true, costRange:"€", timelineWeeks:1},
-            {nr:4, rolle:"Assistenz / Admin", roleKey:"admin", usecase:"Dokumentenzusammenfassungen", outcome:"80 % weniger Lesezeit", ansatz:"Buy", coverage:75, coverageLabel:"75 %", buyShort:"ChatGPT Enterprise, Claude for Work, LangDock (EU)", eu:true, effort:"low", quickWin:true, costRange:"€", timelineWeeks:1},
-            {nr:5, rolle:"Compliance / Recht", roleKey:"compliance", usecase:"Vertragsanalyse", outcome:"70 % schnellere Prüfung", ansatz:"Hybrid", coverage:60, coverageLabel:"60 %", buyShort:"Litera, Luminance, ContractPodAi", eu:false, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:8},
-            {nr:6, rolle:"Compliance / Recht", roleKey:"compliance", usecase:"Compliance und Regulatorik", outcome:"80 % weniger manuelle Prüfzeit", ansatz:"Build", coverage:55, coverageLabel:"55 %", buyShort:"Ascent RegTech, CUBE, Relativity", eu:false, effort:"high", quickWin:false, costRange:"€€€", timelineWeeks:16},
-            {nr:7, rolle:"Controlling / Finance", roleKey:"finance", usecase:"Finanzberichterstattung", outcome:"60 % schnellere Berichtserstellung", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", buyShort:"Salesforce Einstein, Yseop (EU), Workiva", eu:true, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:10},
-            {nr:8, rolle:"Controlling / Finance", roleKey:"finance", usecase:"Datenanalyse Self-Service", outcome:"80 % weniger BI-Anfragen", ansatz:"Buy", coverage:55, coverageLabel:"55 %", buyShort:"ThoughtSpot, Tableau AI, Power BI Copilot", eu:false, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:6},
-            {nr:9, rolle:"E-Commerce / Produktmanagement", roleKey:"ecom", usecase:"Produktbeschreibungen", outcome:"80 % automatisiert", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", buyShort:"Hypotenuse AI, Copy.ai, Akeneo AI (EU)", eu:true, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:4},
-            {nr:10, rolle:"E-Commerce / Produktmanagement", roleKey:"ecom", usecase:"Kundenfeedback-Analyse", outcome:"Analysezyklus: 3 Monate → 1 Tag", ansatz:"Hybrid", coverage:65, coverageLabel:"65 %", buyShort:"Medallia, Qualtrics, Zendesk QA", eu:false, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:8},
-            {nr:11, rolle:"Führungskraft / Management", roleKey:"lead", usecase:"Strategische Entscheidungsunterstützung", outcome:"50 % schnellere Entscheidungsvorbereitung", ansatz:"Build", coverage:45, coverageLabel:"45 %", buyShort:"ChatGPT Enterprise, Claude, LangDock (EU)", eu:true, effort:"high", quickWin:false, costRange:"€€€", timelineWeeks:12},
-            {nr:12, rolle:"Führungskraft / Management", roleKey:"lead", usecase:"Management-Briefings und Reporting", outcome:"75 % weniger Aufwand", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", buyShort:"MS Copilot, Tableau Pulse, Power BI Copilot", eu:false, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:6},
-            {nr:13, rolle:"HR / Recruiting", roleKey:"hr", usecase:"Stellenausschreibungen und Recruiting", outcome:"40 % schnellere Kandidatenvorauswahl", ansatz:"Buy", coverage:60, coverageLabel:"60 %", buyShort:"HireVue, Eightfold AI, Textio", eu:false, effort:"low", quickWin:true, costRange:"€", timelineWeeks:2},
-            {nr:14, rolle:"HR / Recruiting", roleKey:"hr", usecase:"Onboarding-Begleitung", outcome:"40 % kürzere Einarbeitungszeit", ansatz:"Build", coverage:60, coverageLabel:"60 %", buyShort:"Leena AI, Espressive, SAP Joule (EU)", eu:true, effort:"high", quickWin:false, costRange:"€€€", timelineWeeks:12},
-            {nr:15, rolle:"IT / Entwicklung", roleKey:"it", usecase:"Code-Assistenz", outcome:"25 % höhere Entwicklerproduktivität", ansatz:"Buy", coverage:85, coverageLabel:"85 %", buyShort:"GitHub Copilot, Cursor, Amazon Q Developer", eu:false, effort:"low", quickWin:true, costRange:"€", timelineWeeks:1},
-            {nr:16, rolle:"IT / Entwicklung", roleKey:"it", usecase:"IT-Helpdesk und Support", outcome:"55 % schnellere Erstlösung", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", buyShort:"ServiceNow VA, Moveworks, Freshservice AI", eu:false, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:8},
-            {nr:17, rolle:"Kundenservice / Support", roleKey:"service", usecase:"Kundenservice-Chatbot", outcome:"50 % weniger Tickets an Agenten", ansatz:"Buy", coverage:75, coverageLabel:"75 %", buyShort:"Zendesk AI, Intercom Fin, Ada", eu:false, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:6},
-            {nr:18, rolle:"Vertrieb / Marketing", roleKey:"sales", usecase:"Personalisierte Kundenansprache", outcome:"+25 % Conversion Rate", ansatz:"Hybrid", coverage:55, coverageLabel:"55 %", buyShort:"Salesforce Einstein, HubSpot AI, Adobe Sensei", eu:false, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:8},
-            {nr:19, rolle:"Marketing / Kommunikation", roleKey:"mktg", usecase:"Marketing-Content", outcome:"5× mehr Entwürfe pro Woche", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", buyShort:"Jasper, Writer, Acrolinx (EU)", eu:true, effort:"low", quickWin:true, costRange:"€", timelineWeeks:2},
-            {nr:20, rolle:"Marketing / Kommunikation", roleKey:"mktg", usecase:"Übersetzung und Lokalisierung", outcome:"90 % weniger Übersetzungskosten", ansatz:"Buy", coverage:80, coverageLabel:"80 %", buyShort:"DeepL Pro (EU), Phrase (EU), Smartcat", eu:true, effort:"low", quickWin:true, costRange:"€", timelineWeeks:2},
-            {nr:21, rolle:"Personal- / Organisationsentwicklung", roleKey:"oe", usecase:"Schulungs- und Trainingsmaterial", outcome:"85 % schnellere Erstellung", ansatz:"Hybrid", coverage:55, coverageLabel:"55 %", buyShort:"Synthesia, Elai.io, iSpring AI", eu:false, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:6},
-            {nr:22, rolle:"Personal- / Organisationsentwicklung", roleKey:"oe", usecase:"Change-Kommunikation", outcome:"60 % weniger Aufwand", ansatz:"Hybrid", coverage:40, coverageLabel:"40 %", buyShort:"Staffbase (EU), Haiilo (EU), LumApps (EU)", eu:true, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:8},
-            {nr:23, rolle:"Qualität / Operations", roleKey:"quality", usecase:"Prozessdokumentation (SOPs)", outcome:"75 % schnellere Erstellung", ansatz:"Hybrid", coverage:60, coverageLabel:"60 %", buyShort:"Scribe, Tango, Whale (EU)", eu:true, effort:"low", quickWin:true, costRange:"€", timelineWeeks:2},
-            {nr:24, rolle:"Qualität / Operations", roleKey:"quality", usecase:"Audit- und Qualitätssicherung", outcome:"50 % weniger Vorbereitungszeit", ansatz:"Build", coverage:45, coverageLabel:"45 %", buyShort:"Qualio, MasterControl, iAuditor", eu:false, effort:"high", quickWin:false, costRange:"€€€", timelineWeeks:12},
-            {nr:25, rolle:"Vertrieb / Sales", roleKey:"sales", usecase:"Angebotserstellung", outcome:"30 % kürzere Durchlaufzeit", ansatz:"Build", coverage:35, coverageLabel:"35 %", buyShort:"PandaDoc AI, Proposify, DealHub", eu:false, effort:"high", quickWin:false, costRange:"€€€", timelineWeeks:10},
-            {nr:26, rolle:"Vertrieb / Sales", roleKey:"sales", usecase:"RFP-/Ausschreibungsbearbeitung", outcome:"60 % schnellere Bearbeitungszeit", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", buyShort:"Loopio, Responsive, Qvidian", eu:false, effort:"medium", quickWin:false, costRange:"€€", timelineWeeks:8}
-        ];
-
-        // State
-        let activeRoleFilter = "allbereich";
-        let activeAnsatzFilter = "all";
-        let activeCoverageFilter = "all";
-        let activeEffortFilter = "all";
-        let searchQuery = "";
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            applyURLParameters();
-            renderUseCases();
-            setupEventListeners();
-        });
-
-        // Apply URL Parameters
-        function applyURLParameters() {
-            const params = new URLSearchParams(window.location.search);
-
-            if (params.has('role')) {
-                const role = params.get('role');
-                activeRoleFilter = role;
-                updateActivePill('[data-type="role"]', role);
-            }
-
-            if (params.has('ansatz')) {
-                const ansatz = params.get('ansatz');
-                activeAnsatzFilter = ansatz;
-                updateActivePill('[data-type="ansatz"]', ansatz);
-            }
-
-            if (params.has('effort')) {
-                const effort = params.get('effort');
-                activeEffortFilter = effort;
-                updateActivePill('[data-type="effort"]', effort);
-            }
-        }
-
-        // Update Active Pill
-        function updateActivePill(selector, value) {
-            const type = selector.match(/data-type="(\w+)"/)[1];
-            const attrName = type === 'role' ? 'data-role' : type === 'ansatz' ? 'data-ansatz' : type === 'coverage' ? 'data-coverage' : 'data-effort';
-
-            document.querySelectorAll(selector).forEach(btn => btn.classList.remove('active'));
-            document.querySelector(`${selector}[${attrName}="${value}"]`)?.classList.add('active');
-        }
-
-        // Setup Event Listeners
-        function setupEventListeners() {
-            // Role filters
-            document.querySelectorAll('[data-type="role"]').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    document.querySelectorAll('[data-type="role"]').forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    activeRoleFilter = e.target.dataset.role;
-                    renderUseCases();
-                });
-            });
-
-            // Ansatz filters
-            document.querySelectorAll('[data-type="ansatz"]').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    document.querySelectorAll('[data-type="ansatz"]').forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    activeAnsatzFilter = e.target.dataset.ansatz;
-                    renderUseCases();
-                });
-            });
-
-            // Coverage filters
-            document.querySelectorAll('[data-type="coverage"]').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    document.querySelectorAll('[data-type="coverage"]').forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    activeCoverageFilter = e.target.dataset.coverage;
-                    renderUseCases();
-                });
-            });
-
-            // Effort filters
-            document.querySelectorAll('[data-type="effort"]').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    document.querySelectorAll('[data-type="effort"]').forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    activeEffortFilter = e.target.dataset.effort;
-                    renderUseCases();
-                });
-            });
-
-            // Search input
-            document.getElementById('searchInput').addEventListener('input', (e) => {
-                searchQuery = e.target.value.toLowerCase();
-                renderUseCases();
-            });
-
-            // Intro box toggle
-            document.getElementById('introBox').addEventListener('click', (e) => {
-                if (e.target === document.getElementById('introBox') || e.target.closest('.intro-toggle')) {
-                    document.getElementById('introBox').classList.toggle('collapsed');
-                }
-            });
-        }
-
-        // Filter data
-        function getFilteredData() {
-            return DATA.filter(item => {
-                // Role filter
-                if (activeRoleFilter !== "allbereich" && item.roleKey !== activeRoleFilter) {
-                    return false;
-                }
-
-                // Ansatz filter
-                if (activeAnsatzFilter !== "all" && item.ansatz.toLowerCase() !== activeAnsatzFilter) {
-                    return false;
-                }
-
-                // Coverage filter
-                if (activeCoverageFilter !== "all") {
-                    const cov = item.coverage;
-                    if (activeCoverageFilter === "high" && cov < 75) return false;
-                    if (activeCoverageFilter === "medium" && (cov < 50 || cov >= 75)) return false;
-                    if (activeCoverageFilter === "low" && cov >= 50) return false;
-                }
-
-                // Effort filter
-                if (activeEffortFilter !== "all" && item.effort !== activeEffortFilter) {
-                    return false;
-                }
-
-                // Search filter
-                if (searchQuery) {
-                    const query = searchQuery;
-                    const usecase = item.usecase.toLowerCase();
-                    const role = item.rolle.toLowerCase();
-                    const outcome = item.outcome.toLowerCase();
-                    if (!usecase.includes(query) && !role.includes(query) && !outcome.includes(query)) {
-                        return false;
-                    }
-                }
-
-                return true;
-            });
-        }
-
-        // Get coverage class
-        function getCoverageClass(coverage) {
-            if (coverage >= 75) return "high-coverage";
-            if (coverage >= 50) return "medium-coverage";
-            return "low-coverage";
-        }
-
-        // Get role class for badges
-        function getRoleClass(roleKey) {
-            return roleKey;
-        }
-
-        // Get effort label
-        function getEffortLabel(effort) {
-            const labels = {
-                'low': 'Einfach',
-                'medium': 'Moderat',
-                'high': 'Komplex'
-            };
-            return labels[effort] || effort;
-        }
-
-        // Format buy options with EU highlighting
-        function formatBuyOptions(buyShort) {
-            let html = buyShort;
-            html = html.replace(/([^,]+)\s*\(EU\)/g, '<span class="eu-highlight">$1 (EU)</span>');
-            return html;
-        }
-
-        // Generate cost display
-        function generateCostDisplay(costRange) {
-            const counts = {
-                '€': 1,
-                '€€': 2,
-                '€€€': 3
-            };
-            const count = counts[costRange] || 1;
-            let html = '<span class="cost-display">';
-            for (let i = 0; i < 3; i++) {
-                html += `<span class="cost-symbol ${i < count ? 'active' : ''}">€</span>`;
-            }
-            html += '</span>';
-            return html;
-        }
-
-        // Render use cases
-        function renderUseCases() {
-            const filtered = getFilteredData();
-            const container = document.getElementById('usecasesContainer');
-            const noResults = document.getElementById('noResults');
-            const counter = document.getElementById('counter');
-
-            // Update counter
-            counter.textContent = `${filtered.length} von 26 Use Cases sichtbar`;
-
-            if (filtered.length === 0) {
-                container.style.display = 'none';
-                noResults.style.display = 'block';
-                return;
-            }
-
-            container.style.display = '';
-            noResults.style.display = 'none';
-
-            // Sort by role name, then by nr
-            const roleOrder = ['Alle Bereiche', 'Assistenz / Admin', 'Compliance / Recht', 'Controlling / Finance', 'E-Commerce / Produktmanagement', 'Führungskraft / Management', 'HR / Recruiting', 'IT / Entwicklung', 'Kundenservice / Support', 'Vertrieb / Marketing', 'Marketing / Kommunikation', 'Personal- / Organisationsentwicklung', 'Qualität / Operations', 'Vertrieb / Sales'];
-
-            filtered.sort((a, b) => {
-                const roleIndexA = roleOrder.indexOf(a.rolle);
-                const roleIndexB = roleOrder.indexOf(b.rolle);
-                if (roleIndexA !== roleIndexB) return roleIndexA - roleIndexB;
-                return a.nr - b.nr;
-            });
-
-            container.innerHTML = filtered.map(item => {
-                const covClass = getCoverageClass(item.coverage);
-                const roleClass = getRoleClass(item.roleKey);
-                const buyOptionsHtml = formatBuyOptions(item.buyShort);
-                const effortLabel = getEffortLabel(item.effort);
-                const costDisplay = generateCostDisplay(item.costRange);
-                const quickWinBadge = item.quickWin ? `<span class="quickwin-badge">⚡ Quick-Win</span>` : '';
-
-                return `
-                    <div class="usecase-card ${covClass}">
-                        <div class="usecase-header">
-                            <div class="usecase-header-left">
-                                <span class="usecase-nr">${item.nr}</span>
-                                <h3 class="usecase-title">${item.usecase}</h3>
-                                <div class="usecase-meta">
-                                    <span class="role-badge ${roleClass}">${item.rolle}</span>
-                                    <span class="coverage-badge">${item.coverageLabel}</span>
-                                </div>
-                            </div>
-                            <div class="usecase-header-right">
-                                <span class="effort-badge ${item.effort}">${effortLabel}</span>
-                                ${quickWinBadge}
-                            </div>
-                        </div>
-                        <div class="usecase-details">
-                            <div class="details-content">
-                                <div class="detail-row">
-                                    <span class="detail-label">Messbares Outcome</span>
-                                    <div class="detail-value outcome-text">${item.outcome}</div>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">KI-Ansatz</span>
-                                    <div class="detail-value">${item.ansatz}</div>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Buy-Abdeckung</span>
-                                    <div class="detail-value">${item.coverageLabel}</div>
-                                    <div class="coverage-bar-container">
-                                        <div class="coverage-bar" style="width: ${item.coverage}%;"></div>
-                                    </div>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Geschätzter Kostenrahmen</span>
-                                    <div class="detail-value">
-                                        ${costDisplay}
-                                        <div class="timeline-info">ca. ${item.timelineWeeks} ${item.timelineWeeks === 1 ? 'Woche' : 'Wochen'} Implementierung</div>
-                                    </div>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Plattformen & Tools</span>
-                                    <div class="detail-value buy-options">${buyOptionsHtml}</div>
-                                </div>
-                                <div class="detail-row">
-                                    <a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" target="_blank" class="timeline-link">Zur Nutzen-Timeline →</a>
-                                    <a href="https://www.plan-a-consulting.ai/kontakt" class="cta-button" onclick="event.stopPropagation();">Beratungsgespräch vereinbaren →</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            // Add click handlers for expanding cards
-            document.querySelectorAll('.usecase-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    card.classList.toggle('expanded');
-                });
-            });
-        }
-    </script>
 </body>
 </html>
