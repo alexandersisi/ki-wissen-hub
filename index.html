@@ -142,9 +142,15 @@
         }
 
         .path-icon {
-            font-size: 40px;
             margin-bottom: 16px;
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .path-icon svg {
+            width: 48px;
+            height: 48px;
         }
 
         .path-title {
@@ -270,8 +276,9 @@
                 padding: 24px 20px 20px;
             }
 
-            .path-icon {
-                font-size: 32px;
+            .path-icon svg {
+                width: 36px;
+                height: 36px;
             }
 
             .footer-links {
@@ -296,18 +303,18 @@
 
         <!-- 3 Path Cards -->
         <div class="paths-grid">
-            <!-- Path 1: Use-Case-Finder -->
-            <a href="https://alexandersisi.github.io/genai-usecase-finder/" class="path-card">
-                <span class="path-icon">🎯</span>
+            <!-- Path 1: Use-Case-Finder (postMessage for Lovable navigation) -->
+            <div class="path-card" onclick="navigateToUseCaseFinder(event)">
+                <span class="path-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="18" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/><circle cx="24" cy="24" r="12" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/><circle cx="24" cy="24" r="6" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/><circle cx="24" cy="24" r="2" fill="#2EAD60"/><line x1="24" y1="2" x2="24" y2="8" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/><line x1="24" y1="40" x2="24" y2="46" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/><line x1="2" y1="24" x2="8" y2="24" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/><line x1="40" y1="24" x2="46" y2="24" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/></svg></span>
                 <div class="path-title">Konkreter Use Case</div>
                 <div class="path-question">„Welches KI-Tool löst mein Problem?"</div>
                 <div class="path-description">26 Use Cases, filterbar nach Rolle, Aufwand und Implementierungsansatz. Mit Kostenrahmen, Quick-Win-Markierung und Tool-Empfehlungen.</div>
                 <span class="path-cta">Zum Use-Case-Finder →</span>
-            </a>
+            </div>
 
             <!-- Path 2: Nutzen-Timeline -->
             <a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" class="path-card">
-                <span class="path-icon">💡</span>
+                <span class="path-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4C16.268 4 10 10.268 10 18c0 4.42 2.05 8.36 5.25 10.93C16.58 30.04 17 31.48 17 33v1h14v-1c0-1.52.42-2.96 1.75-4.07C35.95 26.36 38 22.42 38 18c0-7.732-6.268-14-14-14z" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 38h12" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/><path d="M20 42h8" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/><path d="M24 12v8" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/><path d="M20 20h8" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/></svg></span>
                 <div class="path-title">KI-Nutzen für meine Rolle</div>
                 <div class="path-question">„Was bringt KI für meinen Bereich?"</div>
                 <div class="path-description">56 Nutzen-Szenarien nach Funktion und Unternehmensbereich. Verstehen Sie, welchen konkreten Mehrwert KI für Ihre Abteilung schaffen kann.</div>
@@ -316,7 +323,7 @@
 
             <!-- Path 3: Tools-Timeline -->
             <a href="https://www.plan-a-consulting.ai/ki-timeline" class="path-card">
-                <span class="path-icon">🔧</span>
+                <span class="path-icon"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.5 7.5a10 10 0 0 0-12.73 1.27L22.5 10l-3-3-4 4 3 3-12 12a3 3 0 0 0 0 4.24l2.26 2.26a3 3 0 0 0 4.24 0l12-12 3 3 4-4-3-3 1.23-1.23A10 10 0 0 0 36.5 7.5z" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 12l6 6" stroke="#2EAD60" stroke-width="2.2" stroke-linecap="round"/></svg></span>
                 <div class="path-title">Technologie-Überblick</div>
                 <div class="path-question">„Welche KI-Tools gibt es?"</div>
                 <div class="path-description">Chronologische Tool-Releases und Meilensteine der KI-Entwicklung. Der Überblick für alle, die den Markt verstehen wollen.</div>
@@ -341,5 +348,18 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function navigateToUseCaseFinder(event) {
+            event.preventDefault();
+            // If embedded in an iframe (Lovable), send postMessage to parent
+            if (window.parent !== window) {
+                window.parent.postMessage({ type: "navigate", path: "/ki-usecase-finder" }, "*");
+            } else {
+                // Fallback: direct navigation when opened standalone
+                window.location.href = "https://alexandersisi.github.io/genai-usecase-finder/";
+            }
+        }
+    </script>
 </body>
 </html>
